@@ -1,0 +1,615 @@
+/* Basic variables */
+:root {
+    --bg: #f7fbff;
+    --white: #ffffff;
+    --muted: #6b7280;
+    --brand: #0ea5e9;
+    --brand-600: #0288d1;
+    --card: #ffffff;
+    --shadow: 0 6px 18px rgba(13, 42, 58, 0.08);
+    --max-width: 1100px;
+    --radius: 12px;
+}
+
+* {
+    box-sizing: border-box
+}
+
+html,
+body {
+    height: 100%
+}
+
+/* Screen reader helper */
+.sr-only {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap;
+    border: 0
+}
+
+/* Typing cursor */
+#hero-typing {
+    border-right: 2px solid rgba(255, 255, 255, 0.95);
+    padding-right: 6px;
+    white-space: normal;
+    overflow: visible;
+    display: inline;
+    vertical-align: middle;
+    max-width: 100%;
+    word-break: break-word
+}
+
+/* Reveal on scroll */
+.reveal {
+    opacity: 0;
+    transform: translateY(16px);
+    transition: opacity .6s ease, transform .6s ease
+}
+
+.reveal.show {
+    opacity: 1;
+    transform: none
+}
+
+body {
+    margin: 0;
+    font-family: 'Poppins', system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial;
+    background: var(--bg);
+    color: #073042;
+    line-height: 1.5;
+    -webkit-font-smoothing: antialiased;
+    overflow-x: hidden
+}
+
+.container {
+    max-width: var(--max-width);
+    margin: 0 auto;
+    padding: 0 20px
+}
+
+/* Header */
+.site-header {
+    position: sticky;
+    top: 0;
+    background: linear-gradient(0deg, rgba(255, 255, 255, 0.95), rgba(255, 255, 255, 0.85));
+    backdrop-filter: blur(6px);
+    z-index: 60;
+    border-bottom: 1px solid rgba(10, 35, 50, 0.04)
+}
+
+.header-inner {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 14px 0
+}
+
+.brand a {
+    display: flex;
+    flex-direction: column;
+    color: var(--brand-600);
+    text-decoration: none
+}
+
+.doc-name {
+    font-weight: 700
+}
+
+.doc-qual {
+    font-size: 12px;
+    color: var(--muted)
+}
+
+.nav ul {
+    display: flex;
+    gap: 18px;
+    list-style: none;
+    padding: 0;
+    margin: 0
+}
+
+.nav a {
+    color: inherit;
+    text-decoration: none;
+    padding: 8px 12px;
+    border-radius: 8px;
+    transition: background .18s ease
+}
+
+.nav a:hover {
+    background: rgba(2, 136, 209, 0.08)
+}
+
+.hamburger {
+    display: none;
+    background: none;
+    border: 0;
+    padding: 8px
+}
+
+.hamburger span {
+    display: block;
+    width: 22px;
+    height: 2px;
+    background: #073042;
+    margin: 4px 0;
+    border-radius: 2px
+}
+
+/* Floating WhatsApp animation */
+.whatsapp-fab {
+    position: fixed;
+    right: 18px;
+    bottom: 92px;
+    background: #25D366;
+    color: white;
+    padding: 12px;
+    border-radius: 50%;
+    box-shadow: 0 10px 24px rgba(2, 136, 209, 0.12);
+    text-decoration: none;
+    font-size: 22px;
+    animation: fabPulse 2.6s infinite ease-in-out
+}
+
+.whatsapp-fab:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 18px 34px rgba(37, 211, 102, 0.18)
+}
+
+@keyframes fabPulse {
+    0% {
+        transform: scale(1)
+    }
+
+    50% {
+        transform: scale(1.06)
+    }
+
+    100% {
+        transform: scale(1)
+    }
+}
+
+/* Mobile nav open styles */
+.nav {
+    transition: all .28s ease
+}
+
+.nav.open {
+    display: block;
+    position: absolute;
+    right: 18px;
+    top: 66px;
+    background: var(--white);
+    padding: 12px;
+    border-radius: 10px;
+    box-shadow: var(--shadow);
+    width: 220px
+}
+
+.nav.open ul {
+    display: flex;
+    flex-direction: column
+}
+
+.nav.open ul li {
+    opacity: 0;
+    transform: translateY(-6px)
+}
+
+.nav.open ul li.show {
+    opacity: 1;
+    transform: none;
+    transition: opacity .28s ease, transform .28s ease
+}
+
+.nav {
+    display: none
+}
+
+/* Hero */
+.hero {
+    min-height: 70vh;
+    display: flex;
+    align-items: center;
+    position: relative;
+    background-image: url('https://images.unsplash.com/photo-1526256262350-7da7584cf5eb?q=80&w=1600&auto=format&fit=crop&ixlib=rb-4.0.3&s=8f6a1ef3e1bb7b9de3b0cbb2e2a7dbe8');
+    background-size: cover;
+    background-position: center;
+    color: var(--white)
+}
+
+.hero-overlay {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(180deg, rgba(2, 24, 38, 0.55), rgba(2, 24, 38, 0.35));
+    backdrop-filter: blur(1px);
+    z-index: 1
+}
+
+.hero-content {
+    position: relative;
+    display: flex;
+    gap: 40px;
+    align-items: center;
+    padding: 80px 0;
+    z-index: 2
+}
+
+.hero-text {
+    max-width: 640px
+}
+
+.hero h1 {
+    font-size: clamp(24px, 4.5vw, 40px);
+    margin: 0 0 12px;
+    color: #ffffff;
+    text-shadow: 0 6px 18px rgba(2, 24, 38, 0.45);
+    overflow-wrap: break-word
+}
+
+.subtext {
+    color: rgba(255, 255, 255, 0.9);
+    margin-bottom: 18px
+}
+
+.hero-ctas .btn {
+    margin-right: 12px
+}
+
+/* Buttons */
+.btn {
+    display: inline-block;
+    padding: 10px 18px;
+    border-radius: 8px;
+    text-decoration: none;
+    border: 1px solid transparent;
+    cursor: pointer;
+    transition: all .18s ease
+}
+
+.btn.primary {
+    background: var(--brand);
+    color: white;
+    box-shadow: var(--shadow)
+}
+
+.btn.primary:hover {
+    transform: translateY(-3px);
+    background: var(--brand-600)
+}
+
+.btn.ghost {
+    background: transparent;
+    color: var(--brand-600);
+    border: 1px solid rgba(2, 136, 209, 0.14)
+}
+
+/* Sections */
+.section-head {
+    text-align: center;
+    margin: 48px 0
+}
+
+.section-head h2 {
+    margin: 6px 0 6px
+}
+
+/* About */
+.about-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 28px;
+    align-items: center
+}
+
+.about-photo img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 12px;
+    box-shadow: var(--shadow)
+}
+
+.about-content h3 {
+    margin: 6px 0
+}
+
+.lead {
+    color: var(--brand-600);
+    font-weight: 600
+}
+
+.info-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 10px;
+    margin-top: 16px;
+    padding: 0;
+    list-style: none
+}
+
+.info-grid li {
+    background: var(--card);
+    padding: 12px;
+    border-radius: 10px;
+    box-shadow: var(--shadow);
+    display: flex;
+    flex-direction: column
+}
+
+.info-grid li strong {
+    font-size: 13px;
+    color: var(--muted)
+}
+
+.info-grid li span {
+    font-weight: 600
+}
+
+/* Cards grid */
+.cards-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 18px
+}
+
+.card {
+    background: var(--card);
+    padding: 18px;
+    border-radius: 12px;
+    box-shadow: var(--shadow);
+    transition: transform .18s ease, box-shadow .18s ease
+}
+
+.card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 14px 28px rgba(2, 136, 209, 0.09)
+}
+
+.card-icon {
+    font-size: 32px;
+    margin-bottom: 10px
+}
+
+/* Testimonials */
+.testimonial-card {
+    background: linear-gradient(180deg, var(--white), #f9fdff);
+    padding: 20px;
+    border-radius: 12px;
+    box-shadow: var(--shadow)
+}
+
+.testimonial-card blockquote {
+    margin: 8px 0;
+    color: var(--muted)
+}
+
+.rating {
+    color: var(--brand-600)
+}
+
+.mySwiper {
+    padding-bottom: 18px
+}
+
+.mySwiper .swiper-wrapper {
+    display: flex;
+    align-items: stretch;
+    gap: 18px
+}
+
+.mySwiper .swiper-slide {
+    display: flex;
+    justify-content: center;
+    box-sizing: border-box;
+    padding: 6px 0
+}
+
+.testimonial-card {
+    width: 100%;
+    max-width: 560px
+}
+
+/* Clinic */
+.clinic-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 18px;
+    align-items: center
+}
+
+.clinic-grid .map iframe {
+    width: 100%;
+    height: 220px;
+    border: 0;
+    border-radius: 10px
+}
+
+/* Contact-grid */
+.contact-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 18px;
+    align-items: start;
+    margin-top: 12px
+}
+
+.contact-card {
+    background: var(--card);
+    padding: 18px;
+    border-radius: 12px;
+    box-shadow: var(--shadow)
+}
+
+.contact-card h3 {
+    margin: 0 0 6px
+}
+
+.contact-card a {
+    color: var(--brand-600);
+    text-decoration: none
+}
+
+/* Form and footer */
+.form-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 12px
+}
+
+.form-group {
+    display: flex;
+    flex-direction: column
+}
+
+.form-group.full {
+    grid-column: 1/-1
+}
+
+input,
+textarea {
+    padding: 10px;
+    border-radius: 8px;
+    border: 1px solid #e6eef6;
+    background: white
+}
+
+.actions {
+    display: flex;
+    align-items: center;
+    gap: 12px
+}
+
+.thankyou {
+    color: green
+}
+
+.site-footer {
+    padding: 22px 0;
+    background: transparent;
+    border-top: 1px solid rgba(10, 35, 50, 0.04)
+}
+
+.footer-inner {
+    display: flex;
+    align-items: center;
+    justify-content: space-between
+}
+
+.socials a {
+    margin-left: 12px;
+    text-decoration: none;
+    color: var(--muted)
+}
+
+.back-top {
+    position: fixed;
+    right: 18px;
+    bottom: 22px;
+    background: #08303b;
+    color: white;
+    border: 0;
+    padding: 10px 12px;
+    border-radius: 8px;
+    display: none
+}
+
+/* Responsive */
+@media (max-width:900px) {
+    .cards-grid {
+        grid-template-columns: repeat(2, 1fr)
+    }
+
+    .about-grid {
+        grid-template-columns: 1fr
+    }
+
+    .clinic-grid {
+        grid-template-columns: 1fr
+    }
+}
+
+@media (max-width:680px) {
+    .hero-content {
+        flex-direction: column;
+        align-items: flex-start;
+        padding: 48px 0;
+        gap: 18px
+    }
+
+    .hero {
+        min-height: 56vh;
+        background-position: center 30%
+    }
+
+    .hero-image {
+        display: none
+    }
+
+    .hero-text {
+        width: 100%
+    }
+
+    .hero h1 {
+        font-size: clamp(20px, 6vw, 30px)
+    }
+
+    .contact-grid {
+        grid-template-columns: 1fr
+    }
+}
+
+@media (max-width:640px) {
+    .nav {
+        display: none
+    }
+
+    .hamburger {
+        display: block
+    }
+
+    .container {
+        padding: 0 16px
+    }
+
+    .cards-grid {
+        grid-template-columns: 1fr
+    }
+
+    .form-grid {
+        grid-template-columns: 1fr
+    }
+
+    .footer-inner {
+        flex-direction: column;
+        gap: 12px
+    }
+
+    .whatsapp-fab {
+        bottom: 82px
+    }
+}
+
+/* small animations */
+.animate-fade {
+    animation: fadeInUp .9s ease both
+}
+
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(8px)
+    }
+
+    to {
+        opacity: 1;
+        transform: none
+    }
+}
